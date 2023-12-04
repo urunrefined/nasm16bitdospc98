@@ -378,22 +378,17 @@ RET
 ;;;;;;;;;;;;;;;; IN: AL byte to be printed
 ;;;;;;;;;;;;;;;; IN: CX number of times to print the byte
 printrep:
-PUSH BX
 PUSH CX
+TEST CX, CX
 
-MOV BX, 0
 printreploop:
-
-CMP CX, BX
 JZ printrepend
-
 CALL printdirect
-INC BX
+DEC CX
 JMP printreploop
 
 printrepend:
 POP CX
-POP BX
 RET
 
 
