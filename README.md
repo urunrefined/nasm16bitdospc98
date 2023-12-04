@@ -72,7 +72,7 @@ segment before is not scrubbed, as such you will see
 data from the previous process after the 0D in the
 commandline.
 
-### hexdump.nasm
+### hexdump.nasm 
 Opens a file given as the argument, hexdumps its content.
 
 ### argsplit.nasm
@@ -81,3 +81,8 @@ to a stack allocated buffer and zero terminating it. Then prints the
 contained arguments one by one by splitting them with using the spaces, which
 separate one argument from another. Other ways of doing this (for example
 using some sort of quotes) are not considered.
+
+### callback.nasm
+Very simple example showing how to invoke a callback. In this case the
+printdirect procedure is invoked 10 times, which prints
+an 'A', which was set before calling the callback.
