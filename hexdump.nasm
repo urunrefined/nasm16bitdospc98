@@ -239,6 +239,8 @@ PUSH AX
 PUSH DX
 PUSH BX
 
+MOV BX, 0
+
 printtozeroloop:
 MOV DL, [DS:DI + BX]
 
@@ -432,9 +434,6 @@ db \
 '4', '5', '6', '7', \
 '8', '9', 'A', 'B', \
 'C', 'D', 'E', 'F'
-
-msg_openok:
-db "Open success", 0x0D, 0x0A, 0
 
 msg_openfail:
 db "Open fail", 0x0D, 0x0A, 0

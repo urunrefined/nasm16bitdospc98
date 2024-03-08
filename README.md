@@ -55,7 +55,7 @@ will).
 
 ## Disassembling
 I recommend the following command to disassemble COM files:
-* objdump --disassembler-options=intel -D -b binary -mi386 -Maddr16,data16 'executeable'* 
+* objdump -D -b binary -mi386 -Maddr16,data16,intel 'executeable' * 
 Be aware the data section will also be disassembled, giving you garbage
 operations at the end. There is no easy way to add data/code segment
 information to COM files, so this is the way it will be.
@@ -86,3 +86,13 @@ using some sort of quotes) are not considered.
 Very simple example showing how to invoke a callback. In this case the
 printdirect procedure is invoked 10 times, which prints
 an 'A', which was set before calling the callback.
+
+### printmem.nasm
+Simple example printing memory. Takes three arguments, segment, offset,
+count. Hexprints from SEGMENT:OFFSET for COUNT bytes.
+
+### softir.nasm
+Simple example how to register a software interrupt. Takes one argument, the
+interrupt number, installs an internal sotware-routine to this number,
+then calls INT on this number, setting a specific address in memory, which
+was 0, to 1.

@@ -21,7 +21,7 @@ CALL printdirect
 MOV AL, ' '
 CALL printdirect
 
-; Print the mmopry as hex string
+; Print the memory as hex string
 CALL printmemory
 
 MOV AL, ' '

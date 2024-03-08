@@ -3,7 +3,7 @@ ORG 0x100
 ; Setup parameters for printcallback
 MOV AL, 'A'
 
-; Setup callback, call printhex 10 times
+; Setup callback, call printdirect 10 times
 MOV CX, 10
 MOV SI, printdirect
 CALL repeatcallback
