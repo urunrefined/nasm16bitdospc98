@@ -30,7 +30,7 @@ MOV AX, DX
 CALL printhex
 CALL printnewline
 
-;; TODO: Check that DX is [0, 1023]
+;; TODO: Check that DX is [0, 256]
 PUSH DI
 MOV DI, valbeforeirmsg
 CALL printtozero
@@ -78,7 +78,7 @@ MOV SI, DX
 ; Far pointer is 4 byte, so mult by 4 to get the right offset in the IR table
 SHL SI, 2
 
-; We only have 20 bits, so the last 8 bytes are always 0
+; We only have 20 bits, so the last 8 bits are always 0
 MOV byte [DS:SI + 3], 0
 
 ; Shift CS by 12 to the right (4 bits remaining)
@@ -413,7 +413,7 @@ CLC
 RET
 
 chtoserr:
-CLC
+STC
 RET
 
 

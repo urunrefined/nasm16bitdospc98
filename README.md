@@ -93,6 +93,39 @@ count. Hexprints from SEGMENT:OFFSET for COUNT bytes.
 
 ### softir.nasm
 Simple example how to register a software interrupt. Takes one argument, the
-interrupt number, installs an internal sotware-routine to this number,
-then calls INT on this number, setting a specific address in memory, which
-was 0, to 1.
+interrupt number, installs an internal software-routine to this number,
+then calls INT on this number, setting the content of a specific address in memory, 
+which was 0, to 1.
+
+If you would like to check that this indeed has worked, try to
+print the IRTable before and after. For example:
+
+```
+A:¥>printmem 20 0 8
+73 36 60 00 73 36 60 00
+```
+
+This prints interrupt 0x80, 0x81 (0x20(DEC 32) *
+0x10 (BytesPerSegment (DEC 16)) / (PTRSize)0x04)
+
+These are two IR addresses (LE - Low bytes printed first).
+The values of these vectors do not have to be the same as
+in the example above, depending on what you have loaded onto
+your system.
+
+Now use softir to try a software interrupt on 0x80:
+```
+A:¥>softir 80
+[...]
+00007AD9
+[...]
+```
+
+Aftwards use printmem with the same parameters again. It should look something like:
+```
+D9 7A 00 00 73 36 60 00
+```
+
+Note that the output here is reversed (Lower Byte printed first), in contrast
+to softir, which prints the "value" as one would expect in modern times
+(positional notation, higher exponent to the left).

@@ -355,7 +355,7 @@ CLC
 RET
 
 chtoserr:
-CLC
+STC
 RET
 
 
